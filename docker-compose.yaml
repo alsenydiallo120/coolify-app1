@@ -1,11 +1,14 @@
-version: "3.9"
 services:
   web:
     build: .
-    ports:
-      - "8001:8001"
+    command: python manage.py runserver 0.0.0.0:8001
     volumes:
       - .:/app
+    ports:
+      - "8001:8001"
     environment:
-      - PYTHONDONTWRITEBYTECODE=1
-      - PYTHONUNBUFFERED=1
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS}
+      - DATABASE_URL=${DATABASE_URL}
+
+
+  
