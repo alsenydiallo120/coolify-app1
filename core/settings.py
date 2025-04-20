@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/5.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
-
+from decouple import Config, Csv,config
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -25,8 +25,10 @@ SECRET_KEY = 'django-insecure-^s*0e^cp@6&1$g-1cefetf8iq8i_rwqltf9e633o%_c1(+q62i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["y8ccgk8ckkswcoo4os4k8cwo.82.29.178.165.sslip.io"]
+ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
+# ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = []
 
 # Application definition
 
@@ -68,7 +70,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'core.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
