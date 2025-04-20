@@ -74,7 +74,7 @@ if DATABASE_URL:
     url = urlparse(DATABASE_URL)
     DATABASES = {
         'default': {
-            'ENGINE': os.getenv('ENGINE'),
+            'ENGINE': os.getenv('DB_ENGINE'),
             'NAME': url.path[1:],
             'USER': url.username,
             'PASSWORD': url.password,
