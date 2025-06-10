@@ -4,7 +4,11 @@ from decouple import config, Csv
 from urllib.parse import urlparse
 from dotenv import load_dotenv
 
-BASE_DIR = Path(__file__).resolve().parent.parent.parent
+# BASE_DIR should point to the project root directory. ``config.py`` lives
+# inside ``core`` so we only need to go two levels up to reach the project
+# root. The previous version went three levels up which resulted in an
+# incorrect path like ``/workspace`` instead of ``/workspace/coolify-app1``.
+BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv()
 
 env = os.getenv("DJANGO_ENV", "dev")
